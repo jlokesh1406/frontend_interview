@@ -3,11 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Responsive Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css.css">
 </head>
 <body>
-    <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse cupiditate perspiciatis enim quaerat nemo fugiat quasi voluptatibus. Quis voluptas possimus sint minus cumque repellat maxime, error nemo neque delectus ea!
-    </div>
+    <header class="navbar">
+        <div>
+            <div class="logo">Tailwick</div>
+            <button class="menu-toggle" id="menuToggle"><i class='bx bx-chevrons-left'></i></i></button>
+            <input type="search" class="search-box" placeholder="&#x1F50E;&#xFE0E; Search for...">
+        </div>
+        <div class="nav-icons">
+            <i class="fas fa-cog"></i>
+            <i class="fas fa-user"></i>
+        </div>
+    </header>
+    <aside class="sidebar" id="sidebar">
+        <div class="menu-title">MENU</div>
+        <nav>
+            <ul>
+                <li class="dropdown">
+                    <a href="#" class="dashboard"><i class='bx bx-category'></i> Dashboards <i class='bx bx-chevron-down'></i></a>
+                    <ul class="submenu">
+                        <li><a href="#" style="color: #0d3c8d;">Analytics</a></li>
+                        <li><a href="#">Ecommerce</a></li>
+                        <li><a href="#">Email</a></li>
+                        <li><a href="#">HR</a></li>
+                        <li><a href="#">Social</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="menu-title">APPS</div>
+            <ul>
+                <li><a href="#"><i class='bx bx-chat'></i> Chat</a></li>
+                <li><a href="#"><i class='bx bx-envelope'></i> Email</a></li>
+                <li><a href="#"><i class='bx bx-note'></i> Notes</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main>
+        <div class="breadcrumb-row">
+            <h2>Analytics</h2>
+            <div class="breadcrumb" style="color: rgb(203, 203, 203);">Dashboards > <span style="color: #1b1f3b;">Analytics</span></div>
+        </div>
+
+        <section class="products-statistics">
+            <div class="header-row">
+                <h3>Products Statistics</h3>
+                <input type="search" id="searchInput" placeholder="&#x1F50E;&#xFE0E; Search for..." onkeyup="searchProducts()" 
+                style="padding: 10px;background-color: white; width: 340px; border: 1px solid rgb(223, 218, 218); font-size: 17px; border-radius: 5px;">
+            </div>
+
+            <div class="tablediv">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="background-color: #e2ebf6;"><input type="checkbox" name=""></th>
+                            <th style="background-color: #e2ebf6;">Product</th>
+                            <th style="background-color: #e2ebf6;">Price</th>
+                            <th style="background-color: #e2ebf6;">Income</th>
+                            <th style="background-color: #e2ebf6;">Sales</th>
+                            <th style="background-color: #e2ebf6;">View</th>
+                            <th style="background-color: #e2ebf6;">Click</th>
+                            <th style="background-color: #e2ebf6;">Click (%)</th>
+                            <th style="background-color: #e2ebf6;">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="product-list"></tbody>
+                </table>
+                
+                <div class="pagination">
+                    <p id="resultsCount">Showing 0 of 0 results</p>
+                    <div>
+                        <button id="prev" onclick="prevPage()"> <i class='bx bxs-chevron-left'></i> Prev</button>
+                        <span id="pageNumbers"></span>
+                        <button id="next" onclick="nextPage()">Next <i class='bx bxs-chevron-right'></i></button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+ 
+        <div class="dashboard">
+            <!-- Status of Monthly Campaign -->
+            <div class="card">
+                <h3>Status of Monthly Campaign</h3>
+                <div class="status-item">
+                    <span>📩&nbsp;&nbsp;Clicked</span>
+                    <span>9,745 <span class="percentage">2.5%</span></span>
+                </div>
+                <div class="status-item">
+                    <span>📢&nbsp;&nbsp;Subscribe</span>
+                    <span>3,352 <span class="percentage">18.9%</span></span>
+                </div>
+                <div class="status-item">
+                    <span>⚠️&nbsp;&nbsp;Unsubscribe</span>
+                    <span>85,745 <span class="percentage red">1.2%</span></span>
+                </div>
+                <div class="status-item">
+                    <span>👁️&nbsp;&nbsp;Viewers</span>
+                    <span>85,745 <span class="percentage">11.6%</span></span>
+                </div>
+                <div class="status-item">
+                    <span>📨&nbsp;&nbsp;Opened</span>
+                    <span>85,745 <span class="percentage red">3.1%</span></span>
+                </div>
+            </div>
+
+            <!-- Traffic Source -->
+            <div class="card">
+                <h3 style="display: flex; justify-content: space-between; align-items: center;">
+                    Traffic Source
+                    <a href="#" style="color: #007bff; font-size: 15px;">See more</a>
+                </h3>
+                    <div class="status-item">
+                        <span>Google</span>
+                        <span>54,963</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress blue"></div></div>
+
+                <div class="status-item">
+                    <span>Social Media</span>
+                    <span>54,963</span>
+                </div>
+                <div class="progress-bar"><div class="progress yellow"></div></div>
+
+                    <div class="status-item">
+                        <span>Direct Message</span>
+                        <span>54,963</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress green"></div></div>
+
+                <div class="status-item">
+                    <span>Others</span>
+                    <span>54,963</span>
+                </div>
+                <div class="progress-bar"><div class="progress gray"></div></div>
+            </div>
+        </div>
+    </main>
+    <script src="js.js"></script>
 </body>
 </html>
